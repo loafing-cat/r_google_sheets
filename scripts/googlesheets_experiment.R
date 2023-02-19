@@ -4,11 +4,11 @@ rm(list = ls()); gc()
 
 pacman::p_load(tidyverse, rio, here, googlesheets4)
 
-subjects <- c("ART", "BIO", "CHM", "SOC", "STP")
+master_data <- read_sheet(
+  ss = "https://docs.google.com/spreadsheets/d/10oMHGipDrQJDzdjF-ZQi5Ct3yS-CtIi2sRbJvREvBR4/edit?usp=sharing",
+  sheet = "Assets"
+)
 
-for (i in subjects) {
-  print(i)
-}
+gs4_auth()
 
-blah <- data.frame(neko = c("black", "white", "orange", "grey"),
-                   dog = c("brown", "black", "gold", "white"))
+Sys.setenv(GOOGLE_API_KEY = "api_key")
